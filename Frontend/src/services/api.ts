@@ -1,4 +1,6 @@
 import axios from 'axios'
+import type { Cluster } from '../types/cluster'
+import type { Event } from '../types/event'
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8080/api',
@@ -45,6 +47,16 @@ export const loginAdmin = async (payload: LoginAdminPayload) => {
 
 export const createEvent = async (payload: CreateEventPayload) => {
   const response = await api.post('/events', payload)
+  return response.data
+}
+
+export const getEventById = async (eventId: string) => {
+  const response = await api.get<Event>(`/events/${eventId}`)
+  return response.data
+}
+
+export const getClustersByEventId = async (eventId: string) => {
+  const response = await api.get<Cluster[]>(`/admin/clusters/${eventId}`)
   return response.data
 }
 

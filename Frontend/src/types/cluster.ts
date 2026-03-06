@@ -1,7 +1,14 @@
+export type RiskLevel = 'LOW' | 'MEDIUM' | 'HIGH'
+
+export interface Incident {
+  name: string
+  phoneNumber: string
+}
+
 export interface Cluster {
-  id: string
-  latitude: number
-  longitude: number
-  severity: 'LOW' | 'MEDIUM' | 'HIGH'
-  reportCount: number
+  centerLat: number
+  centerLng: number
+  incidentCount: number
+  riskLevel: RiskLevel
+  incidents: Incident[]
 }

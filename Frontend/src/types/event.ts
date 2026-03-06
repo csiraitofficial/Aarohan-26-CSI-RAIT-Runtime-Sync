@@ -1,7 +1,9 @@
 export interface Event {
-  id: string
+  id: string | number
   name: string
-  location: string
+  centerLat: number
+  centerLng: number
+  radius: number
   startTime: string
   endTime: string
 }
