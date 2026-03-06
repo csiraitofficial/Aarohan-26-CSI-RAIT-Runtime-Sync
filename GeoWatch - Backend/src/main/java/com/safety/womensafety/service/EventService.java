@@ -176,11 +176,11 @@ public class EventService {
     // ----------------------------
     // ACTIVE EVENTS (AdminHome)
     // ----------------------------
-    public List<EventDetailsResponse> getActiveEvents() {
+    public List<EventDetailsResponse> getActiveEvents(Long adminId) {
 
         LocalDateTime now = LocalDateTime.now();
 
-        List<Event> events = eventRepository.findByEndTimeAfter(now);
+        List<Event> events = eventRepository.findByAdmin_IdAndEndTimeAfter(adminId, now);
 
         List<EventDetailsResponse> response = new ArrayList<>();
 

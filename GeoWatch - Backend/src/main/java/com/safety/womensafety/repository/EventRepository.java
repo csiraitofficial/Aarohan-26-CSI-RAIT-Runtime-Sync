@@ -8,4 +8,5 @@ import java.util.List;
 public interface EventRepository extends JpaRepository<Event, Long> {
     List<Event> findByStartTimeBeforeAndEndTimeAfter(LocalDateTime now1, LocalDateTime now2);
     List<Event> findByEndTimeAfter(LocalDateTime now);
+    List<Event> findByAdmin_IdAndEndTimeAfter(Long adminId, LocalDateTime now);
 }

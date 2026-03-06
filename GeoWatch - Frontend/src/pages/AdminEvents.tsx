@@ -28,8 +28,16 @@ function AdminEvents() {
 
   useEffect(() => {
     const loadEvents = async () => {
+      const adminId = Number(localStorage.getItem('adminId'))
+      if (!Number.isFinite(adminId) || adminId <= 0) {
+        setError('Admin session missing. Please log in again.')
+        setEvents([])
+        setLoading(false)
+        return
+      }
+
       try {
-        const data = await getActiveEvents()
+        const data = await getActiveEvents(adminId)
         console.log('ACTIVE EVENTS RESPONSE:', data)
         setEvents(Array.isArray(data) ? (data as ActiveEvent[]) : [])
       } catch {
