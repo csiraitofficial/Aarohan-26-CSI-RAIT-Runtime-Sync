@@ -46,7 +46,7 @@ function AdminLogin() {
       }
 
       localStorage.setItem('adminId', String(adminId))
-      navigate('/admin/create-event')
+      navigate('/admin/home')
     } catch {
       setError('Login failed. Please check your credentials.')
     } finally {

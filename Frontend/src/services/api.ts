@@ -60,4 +60,9 @@ export const getClustersByEventId = async (eventId: string) => {
   return response.data
 }
 
+export const getActiveEvents = async () => {
+  const response = await api.get<Event[]>('/api/admin/events/active')
+  return response.data
+}
+
 export default api
