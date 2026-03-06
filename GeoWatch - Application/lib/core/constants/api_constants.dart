@@ -1,8 +1,11 @@
 class ApiConstants {
 
-  // YOUR CURRENT LAPTOP IP
+  // Backend server running on your laptop
+  // IP taken from ipconfig (Wi-Fi IPv4 Address)
+
   static const String baseUrl = 'http://10.96.130.210:8080';
 
+  // APIs
   static const String nearbyEvents = '/api/events/nearby';
 
   static const String incidents = '/api/incidents';

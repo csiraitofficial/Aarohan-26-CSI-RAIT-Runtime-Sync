@@ -63,9 +63,9 @@ public class EventController {
 
     // Get Active Events (for AdminHome)
     @GetMapping("/admin/active")
-    public ResponseEntity<List<EventDetailsResponse>> getActiveEvents() {
+    public ResponseEntity<List<EventDetailsResponse>> getActiveEvents(@RequestParam Long adminId) {
 
-        List<EventDetailsResponse> events = eventService.getActiveEvents();
+        List<EventDetailsResponse> events = eventService.getActiveEvents(adminId);
 
         return ResponseEntity.ok(events);
     }
