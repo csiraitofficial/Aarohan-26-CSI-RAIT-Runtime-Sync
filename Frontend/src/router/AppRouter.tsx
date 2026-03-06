@@ -4,6 +4,7 @@ import AdminLayout from '../layouts/AdminLayout'
 import Home from '../pages/Home'
 import AdminRegister from '../pages/AdminRegister'
 import AdminLogin from '../pages/AdminLogin'
+import AdminHome from '../pages/AdminHome'
 import CreateEvent from '../pages/CreateEvent'
 import Dashboard from '../pages/Dashboard'
 
@@ -18,6 +19,7 @@ function AppRouter() {
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="register" element={<AdminRegister />} />
           <Route path="login" element={<AdminLogin />} />
+          <Route path="home" element={<AdminHome />} />
           <Route path="create-event" element={<CreateEvent />} />
           <Route path="dashboard/:eventId" element={<Dashboard />} />
         </Route>
