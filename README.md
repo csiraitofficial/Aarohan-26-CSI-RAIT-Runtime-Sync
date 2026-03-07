@@ -58,7 +58,59 @@ GeoWatch aggregates these reports and applies **geospatial clustering** to detec
 6. Organizers see **live heatmaps and cluster markers** on the event map.
 
 ---
-
+┌───────────────────────────────┐
+│        Mobile Application      │
+│           (Flutter)            │
+│                                │
+│  • Discover nearby events      │
+│  • Submit incident reports     │
+│  • Send GPS coordinates        │
+└───────────────┬────────────────┘
+                │
+                │ REST API
+                ▼
+┌───────────────────────────────┐
+│         Backend Server        │
+│        (Spring Boot)          │
+│                               │
+│ Controllers                   │
+│  ├─ EventController           │
+│  ├─ IncidentControlle         │
+│  └─ AdminController           │
+│                               │
+│ Services                      │
+│  ├─ EventService              │
+│  ├─ IncidentService           │
+│  └─ DbscanClusteringService   │
+│                               │
+│ Utilities                     │
+│  └─ GeoUtil (Haversine)       │
+└───────────────┬───────────────┘
+                │
+                │ JPA
+                ▼
+┌───────────────────────────────┐
+│           Database            │
+│          PostgreSQL           │
+│                               │
+│  • Admin                      │
+│  • Event                      │
+│  • Organizer                  │
+│  • Incident                   │
+└───────────────┬───────────────┘
+                │
+                │ WebSocket / STOMP
+                ▼
+┌───────────────────────────────┐
+│        Admin Dashboard        │
+│      (React + Leaflet)        │
+│                               │
+│  • Monitor events             │
+│  • View incident clusters     │
+│  • Display risk heatmaps      │
+│  • Receive live updates       │
+└───────────────────────────────┘
+---
 ## Technologies Used
 
 | Layer | Technology |
@@ -74,6 +126,31 @@ GeoWatch aggregates these reports and applies **geospatial clustering** to detec
 
 ---
 
+## Practical Impact
+
+GeoWatch can significantly improve safety management during crowded events by providing real-time situational awareness.
+
+Potential real-world applications include:
+
+- **Concerts and Festivals**
+  - Quickly identify dangerous crowd zones or emergencies.
+
+- **College Festivals and Hackathons**
+  - Monitor large campus gatherings and respond to incidents faster.
+
+- **Sports Events**
+  - Detect crowd disturbances or medical emergencies.
+
+- **Public Gatherings and Rallies**
+  - Assist organizers and authorities in monitoring crowd safety.
+
+- **Smart City Safety Systems**
+  - Integrate with city surveillance systems for proactive crowd risk detection.
+
+By converting scattered reports into **live geospatial risk intelligence**, GeoWatch enables organizers and authorities to take **faster, data-driven safety actions**.
+
+---
+
 ## What GeoWatch Achieves
 
-GeoWatch converts scattered incident reports into **real-time geospatial risk intelligence**, helping event organizers detect danger zones early and improve crowd safety response.# Aarohan-26-CSI-RAIT-Runtime-Sync
+GeoWatch converts scattered incident reports into **real-time geospatial risk intelligence**, helping event organizers detect danger zones early and improve crowd safety response.
