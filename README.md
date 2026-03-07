@@ -58,59 +58,6 @@ GeoWatch aggregates these reports and applies **geospatial clustering** to detec
 6. Organizers see **live heatmaps and cluster markers** on the event map.
 
 ---
-┌───────────────────────────────┐
-│        Mobile Application      │
-│           (Flutter)            │
-│                                │
-│  • Discover nearby events      │
-│  • Submit incident reports     │
-│  • Send GPS coordinates        │
-└───────────────┬────────────────┘
-                │
-                │ REST API
-                ▼
-┌───────────────────────────────┐
-│         Backend Server         │
-│        (Spring Boot)           │
-│                                │
-│ Controllers                    │
-│  ├─ EventController            │
-│  ├─ IncidentController         │
-│  └─ AdminController            │
-│                                │
-│ Services                       │
-│  ├─ EventService               │
-│  ├─ IncidentService            │
-│  └─ DbscanClusteringService    │
-│                                │
-│ Utilities                      │
-│  └─ GeoUtil (Haversine)        │
-└───────────────┬────────────────┘
-                │
-                │ JPA
-                ▼
-┌───────────────────────────────┐
-│           Database             │
-│          PostgreSQL            │
-│                                │
-│  • Admin                       │
-│  • Event                       │
-│  • Organizer                   │
-│  • Incident                    │
-└───────────────┬────────────────┘
-                │
-                │ WebSocket / STOMP
-                ▼
-┌───────────────────────────────┐
-│        Admin Dashboard         │
-│      (React + Leaflet)         │
-│                                │
-│  • Monitor events              │
-│  • View incident clusters      │
-│  • Display risk heatmaps       │
-│  • Receive live updates        │
-└───────────────────────────────┘
----
 ## Technologies Used
 
 | Layer | Technology |
