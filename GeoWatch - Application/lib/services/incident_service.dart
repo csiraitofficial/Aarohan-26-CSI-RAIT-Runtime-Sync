@@ -1,14 +1,15 @@
 import 'package:dio/dio.dart';
 
 import '../core/config/app_config.dart';
-import '../core/constants/api_constants.dart';
 import '../core/network/api_client.dart';
 import '../models/incident_request.dart';
+import 'api_service.dart';
 
 class IncidentService {
-  IncidentService({ApiClient? apiClient}) : _apiClient = apiClient ?? ApiClient();
+  IncidentService({ApiClient? apiClient})
+      : _apiService = ApiService(apiClient: apiClient ?? ApiClient());
 
-  final ApiClient _apiClient;
+  final ApiService _apiService;
 
   /// Submit incident and return incidentId
   Future<int> submitIncident(IncidentRequest request) async {
@@ -18,12 +19,7 @@ class IncidentService {
     }
 
     try {
-      final response = await _apiClient.dio.post(
-        ApiConstants.incidents,
-        data: request.toJson(),
-      );
-
-      final data = response.data;
+      final data = await _apiService.submitIncident(request.toJson());
 
       if (data is int) {
         return data;
@@ -47,31 +43,18 @@ class IncidentService {
     }
 
     try {
-      await _apiClient.dio.post(
-        '${ApiConstants.incidents}/$incidentId/resolve',
-      );
+      await _apiService.resolveIncident(incidentId);
     } on DioException catch (e) {
       throw Exception(_mapDioError(e));
     }
   }
 
   String _mapDioError(DioException e) {
-    if (e.type == DioExceptionType.connectionTimeout ||
-        e.type == DioExceptionType.receiveTimeout ||
-        e.type == DioExceptionType.sendTimeout) {
-      return 'Request timed out. Please try again.';
-    }
-
-    if (e.type == DioExceptionType.connectionError) {
-      return 'No internet connection. Please check your network.';
-    }
-
-    final data = e.response?.data;
-
-    if (data is Map<String, dynamic> && data['message'] != null) {
-      return data['message'].toString();
-    }
-
-    return 'Unable to submit incident right now. Please try again.';
+    return _apiService.mapDioError(
+      e,
+      fallback: 'Unable to submit incident right now. Please try again.',
+      connectionMessage: 'No internet connection. Please check your network.',
+      timeoutMessage: 'Request timed out. Please try again.',
+    );
   }
 }

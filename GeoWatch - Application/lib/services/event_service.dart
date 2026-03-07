@@ -1,14 +1,15 @@
 import 'package:dio/dio.dart';
 
 import '../core/config/app_config.dart';
-import '../core/constants/api_constants.dart';
 import '../core/network/api_client.dart';
 import '../models/event_model.dart';
+import 'api_service.dart';
 
 class EventService {
-  EventService({ApiClient? apiClient}) : _apiClient = apiClient ?? ApiClient();
+  EventService({ApiClient? apiClient})
+      : _apiService = ApiService(apiClient: apiClient ?? ApiClient());
 
-  final ApiClient _apiClient;
+  final ApiService _apiService;
 
   Future<List<EventModel>> fetchNearbyEvents(double lat, double lng) async {
     if (AppConfig.useMockBackend) {
@@ -37,16 +38,10 @@ class EventService {
     }
 
     try {
-      final response = await _apiClient.dio.get(
-        ApiConstants.nearbyEvents,
-        queryParameters: {'lat': lat, 'lng': lng},
+      final data = await _apiService.getNearbyEvents(
+        latitude: lat,
+        longitude: lng,
       );
-
-      final data = response.data;
-      if (data is! List) {
-        throw Exception('Invalid server response. Please try again.');
-      }
-
       return data
           .map((item) => EventModel.fromJson(Map<String, dynamic>.from(item)))
           .toList();
@@ -70,11 +65,12 @@ class EventService {
       return 'Service is temporarily unavailable. Please try shortly.';
     }
 
-    final data = e.response?.data;
-    if (data is Map<String, dynamic> && data['message'] != null) {
-      return data['message'].toString();
-    }
-
-    return 'Unable to load nearby events right now.';
+    return _apiService.mapDioError(
+      e,
+      fallback: 'Unable to load nearby events right now.',
+      connectionMessage:
+          'Unable to load nearby events. Please check your internet connection.',
+      timeoutMessage: 'Server is taking too long to respond. Please try again.',
+    );
   }
 }
