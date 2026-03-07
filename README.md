@@ -70,45 +70,45 @@ GeoWatch aggregates these reports and applies **geospatial clustering** to detec
                 │ REST API
                 ▼
 ┌───────────────────────────────┐
-│         Backend Server        │
-│        (Spring Boot)          │
-│                               │
-│ Controllers                   │
-│  ├─ EventController           │
-│  ├─ IncidentControlle         │
-│  └─ AdminController           │
-│                               │
-│ Services                      │
-│  ├─ EventService              │
-│  ├─ IncidentService           │
-│  └─ DbscanClusteringService   │
-│                               │
-│ Utilities                     │
-│  └─ GeoUtil (Haversine)       │
-└───────────────┬───────────────┘
+│         Backend Server         │
+│        (Spring Boot)           │
+│                                │
+│ Controllers                    │
+│  ├─ EventController            │
+│  ├─ IncidentController         │
+│  └─ AdminController            │
+│                                │
+│ Services                       │
+│  ├─ EventService               │
+│  ├─ IncidentService            │
+│  └─ DbscanClusteringService    │
+│                                │
+│ Utilities                      │
+│  └─ GeoUtil (Haversine)        │
+└───────────────┬────────────────┘
                 │
                 │ JPA
                 ▼
 ┌───────────────────────────────┐
-│           Database            │
-│          PostgreSQL           │
-│                               │
-│  • Admin                      │
-│  • Event                      │
-│  • Organizer                  │
-│  • Incident                   │
-└───────────────┬───────────────┘
+│           Database             │
+│          PostgreSQL            │
+│                                │
+│  • Admin                       │
+│  • Event                       │
+│  • Organizer                   │
+│  • Incident                    │
+└───────────────┬────────────────┘
                 │
                 │ WebSocket / STOMP
                 ▼
 ┌───────────────────────────────┐
-│        Admin Dashboard        │
-│      (React + Leaflet)        │
-│                               │
-│  • Monitor events             │
-│  • View incident clusters     │
-│  • Display risk heatmaps      │
-│  • Receive live updates       │
+│        Admin Dashboard         │
+│      (React + Leaflet)         │
+│                                │
+│  • Monitor events              │
+│  • View incident clusters      │
+│  • Display risk heatmaps       │
+│  • Receive live updates        │
 └───────────────────────────────┘
 ---
 ## Technologies Used
