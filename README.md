@@ -63,7 +63,7 @@ GeoWatch aggregates these reports and applies **geospatial clustering** to detec
 
 ### Home Page
 
-![Home Page](img1.png)
+![Home Page](img1.jpeg)
 
 *Figure 1: GeoWatch home page where users can view available events and access the reporting interface.*
 
@@ -71,7 +71,7 @@ GeoWatch aggregates these reports and applies **geospatial clustering** to detec
 
 ### Event Creation Page
 
-![Event Creation](img2.png)
+![Event Creation](img2.jpeg)
 
 *Figure 2: Admin interface used to create and configure a new event with location and event details.*
 
@@ -79,7 +79,7 @@ GeoWatch aggregates these reports and applies **geospatial clustering** to detec
 
 ### Event Map (Initial State)
 
-![Empty Event Map](img3.png)
+![Empty Event Map](img3.jpeg)
 
 *Figure 3: Admin dashboard displaying the event map before any incidents are reported.*
 
@@ -87,7 +87,7 @@ GeoWatch aggregates these reports and applies **geospatial clustering** to detec
 
 ### Heatmap Visualization
 
-![Heatmap Display](img4.png)
+![Heatmap Display](img4.jpeg)
 
 *Figure 4: Real-time heatmap generated from clustered incidents showing potential risk zones.*
 
