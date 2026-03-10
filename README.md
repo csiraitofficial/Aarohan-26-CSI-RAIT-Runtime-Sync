@@ -58,6 +58,41 @@ GeoWatch aggregates these reports and applies **geospatial clustering** to detec
 6. Organizers see **live heatmaps and cluster markers** on the event map.
 
 ---
+
+## System Interface Screenshots
+
+### Home Page
+
+![Home Page](img1.png)
+
+*Figure 1: GeoWatch home page where users can view available events and access the reporting interface.*
+
+---
+
+### Event Creation Page
+
+![Event Creation](img2.png)
+
+*Figure 2: Admin interface used to create and configure a new event with location and event details.*
+
+---
+
+### Event Map (Initial State)
+
+![Empty Event Map](img3.png)
+
+*Figure 3: Admin dashboard displaying the event map before any incidents are reported.*
+
+---
+
+### Heatmap Visualization
+
+![Heatmap Display](img4.png)
+
+*Figure 4: Real-time heatmap generated from clustered incidents showing potential risk zones.*
+
+---
+
 ## Technologies Used
 
 | Layer | Technology |
