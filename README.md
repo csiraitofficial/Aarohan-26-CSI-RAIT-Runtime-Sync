@@ -16,7 +16,7 @@ GeoWatch aggregates these reports and applies **geospatial clustering** to detec
 
 ## Key Features
 
-- **Real-Time Incident Reporting**
+- **Real Time Incident Reporting**
   - Participants submit SOS alerts with live GPS coordinates.
 
 - **Event Geofencing**
@@ -40,7 +40,7 @@ GeoWatch aggregates these reports and applies **geospatial clustering** to detec
 
 | Component | Description |
 |----------|-------------|
-| **Mobile App** | Flutter application used by participants to report incidents |
+| **Mobile App** | Flutter application used by participants to report incident |
 | **Backend API** | Spring Boot service handling incident ingestion, clustering, and broadcasting |
 | **Admin Dashboard** | React web application for monitoring crowd safety in real time |
 | **Database** | PostgreSQL storing events, incidents, organizers, and admins |
